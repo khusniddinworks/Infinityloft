@@ -18,7 +18,7 @@ const TRANSLATIONS = {
         "hero.badge": "Premium LOFT Metall Konstruksiyalar",
         "hero.title1": "Cheksiz",
         "hero.title2": "Mukammallik",
-        "hero.subtitle": "Премиальные металлоконструкции ЛОФТ в Ташкенте — современные лестницы, стеклянные двери и прочные перегородки. Индивидуальный дизайн и гарантия качества.",
+        "hero.subtitle": "Toshkentda zamonaviy LOFT uslubidagi metall konstruksiyalar — premium zinapoyalar, shisha eshiklar va mustahkam peregorodkalar. Individual dizayn va sifat kafolati.",
         "hero.cta1": "Ishlarimizni ko'ring",
         "hero.cta2": "Bepul konsultatsiya",
 
@@ -36,8 +36,8 @@ const TRANSLATIONS = {
 
         // Services
         "services.label": "Xizmatlar",
-        "services.title": "Лестницы и <span class='accent'>стеклянные системы</span>",
-        "services.desc": "Металлоконструкции ЛОФТ премиум-класса в Ташкенте — проектирование, профессиональное производство и монтаж с гарантией",
+        "services.title": "Zinapoya va <span class='accent'>shisha tizimlar</span>",
+        "services.desc": "Toshkentda premium sifatli loft metall konstruksiyalar — loyihalash, professional ishlab chiqarish va o'rnatish xizmati",
         "services.s1.title": "Surma tizimlar",
         "services.s1.desc": "Zamonaviy loft uslubidagi shisha va metall surma eshiklar. Joyni tejash va chiroyli dizayn uchun ideal yechim.",
         "services.s2.title": "Ochiladigan tizimlar",
