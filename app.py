@@ -25,7 +25,8 @@ CORS(app, resources={r"/api/*": {"origins": ALLOWED_ORIGINS}})
 
 # Telegram Config
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+CHAT_ID_ENV = os.getenv("TELEGRAM_CHAT_ID")
+CHAT_IDS = [cid.strip() for cid in CHAT_ID_ENV.split(",")] if CHAT_ID_ENV else []
 APP_URL = os.getenv("APP_URL")
 
 @app.route("/", methods=["GET"])
@@ -33,7 +34,7 @@ def home():
     return jsonify({
         "status": "active",
         "service": "Infinity Loft Telegram Bot API",
-        "bot_configured": bool(BOT_TOKEN and CHAT_ID)
+        "bot_configured": bool(BOT_TOKEN and CHAT_IDS)
     })
 
 @app.route("/api/contact", methods=["POST"])
@@ -74,19 +75,24 @@ def contact():
     )
 
     try:
-        if not BOT_TOKEN or not CHAT_ID:
+        if not BOT_TOKEN or not CHAT_IDS:
             app.logger.error("BOT_TOKEN yoki CHAT_ID topilmadi!")
             return jsonify({"success": False, "message": "Bot configuration error"}), 500
 
         url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-        payload = {
-            "chat_id": CHAT_ID,
-            "text": bot_msg,
-            "parse_mode": "HTML"
-        }
         
-        response = requests.post(url, json=payload, timeout=15)
-        response.raise_for_status()
+        for chat_id in CHAT_IDS:
+            payload = {
+                "chat_id": chat_id,
+                "text": bot_msg,
+                "parse_mode": "HTML"
+            }
+            try:
+                response = requests.post(url, json=payload, timeout=15)
+                response.raise_for_status()
+            except Exception as e:
+                app.logger.error(f"TELEGRAM XATO (chat_id={chat_id}): {str(e)}")
+        
         return jsonify({"success": True, "message": "Sent to Telegram"})
     except Exception as e:
         app.logger.error(f"TELEGRAM XATO: {str(e)}")

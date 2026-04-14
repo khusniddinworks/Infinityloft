@@ -15,10 +15,10 @@ const TRANSLATIONS = {
         "nav.call": "Bog'lanish",
 
         // Hero
-        "hero.badge": "Premium LOFT Metall Konstruksiyalar",
-        "hero.title1": "Cheksiz",
-        "hero.title2": "Mukammallik",
-        "hero.subtitle": "Toshkentda zamonaviy LOFT uslubidagi metall konstruksiyalar — premium zinapoyalar, shisha eshiklar va mustahkam peregorodkalar. Individual dizayn va sifat kafolati.",
+        "hero.badge": "Toshkentda Premium LOFT Metall Konstruksiyalar",
+        "hero.title1": "ZAMONAVIY LOFT",
+        "hero.title2": "KONSTRUKSIYALAR",
+        "hero.subtitle": "Toshkentda premium LOFT metall konstruksiyalar — garmoshka eshiklar, ochiladigan tizimlar va shisha peregorodkalar. Professional ishlab chiqarish va 12 yillik tajriba.",
         "hero.cta1": "Ishlarimizni ko'ring",
         "hero.cta2": "Bepul konsultatsiya",
 
@@ -218,10 +218,10 @@ const TRANSLATIONS = {
         "nav.contact": "Контакты",
         "nav.call": "Связаться",
 
-        "hero.badge": "Премиум ЛОФТ Металлоконструкции",
-        "hero.title1": "Безграничное",
-        "hero.title2": "Совершенство",
-        "hero.subtitle": "Современные металлоконструкции в стиле ЛОФТ — перила, двери, перегородки. Каждый заказ изготавливается по индивидуальным размерам.",
+        "hero.badge": "Премиум ЛОФТ Металлоконструкции в Ташкенте",
+        "hero.title1": "ЛОФТ СИСТЕМЫ",
+        "hero.title2": "И ПЕРЕГОРОДКИ",
+        "hero.subtitle": "Современные металлоконструкции в стиле ЛОФТ в Ташкенте — системы гармошка, распашные двери и стеклянные перегородки. Качество и надежность 12 лет.",
         "hero.cta1": "Наши работы",
         "hero.cta2": "Бесплатная консультация",
 
