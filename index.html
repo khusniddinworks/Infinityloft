@@ -11,6 +11,24 @@
     <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" type="font/woff2" crossorigin>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1629373438183865');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1629373438183865&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
     <!-- SEO Optimization -->
     <title>Infinity Loft — Toshkentda LOFT Eshiklar, Garmoshka va Shisha Peregorodkalar</title>
     <meta name="description"
@@ -1527,7 +1545,13 @@
                 <p class="promo-sub-text" data-i18n="promo.sub">Raqamingizni qoldiring:</p>
                 <form id="promo-form" class="promo-form">
                     <div class="form-group">
+                        <input type="text" id="promo-name" name="name" placeholder="Ismingiz" data-i18n-ph="form.name.ph" required>
+                    </div>
+                    <div class="form-group">
                         <input type="tel" id="promo-phone" name="phone" placeholder="+998 (__) ___-__-__" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="promo-address" name="address" placeholder="Manzil (joyingiz)" data-i18n-ph="promo.address.ph" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
                         <span data-i18n="promo.btn">Chegirmani olish</span>

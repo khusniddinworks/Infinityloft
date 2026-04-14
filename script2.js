@@ -661,11 +661,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerHTML = `<span>${t['promo.sending'] || '⌛ Yuborilmoqda...'}</span>`;
             }
 
+            const nameValue = document.getElementById('promo-name') ? document.getElementById('promo-name').value : "AKSIYA MIJOZI";
+            const addressValue = document.getElementById('promo-address') ? document.getElementById('promo-address').value : "Kiritilmagan";
+
             const payload = {
-                name: "AKSIYA MIJOZI",
+                name: nameValue,
                 phone: phone,
                 service: "10% CHEGIRMA",
-                message: "🎁 MIJOZ 10% CHEGIRMANI QO'LGA KIRITMOQCHI!"
+                message: `🎁 MIJOZ 10% CHEGIRMANI QO'LGA KIRITMOQCHI!\n` +
+                         `--------------------------\n` +
+                         `👤 Ism: ${nameValue}\n` +
+                         `📍 Manzil: ${addressValue}\n` +
+                         `📞 Tel: ${phone}`
             };
 
             try {
