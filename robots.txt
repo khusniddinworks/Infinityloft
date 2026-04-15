@@ -1,4 +1,39 @@
+# =========================================
+# robots.txt — infinityloft.uz
+# Last updated: 2026-04-15
+# =========================================
+
+# --- All crawlers ---
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /.env
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /admin/
+Crawl-delay: 2
 
+# --- Googlebot — full access ---
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /.env
+Disallow: /.git/
+
+# --- Google Image Bot ---
+User-agent: Googlebot-Image
+Allow: /images/
+
+# --- Yandex (important for CIS market) ---
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+Crawl-delay: 3
+
+# --- Bingbot ---
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# =========================================
 Sitemap: https://infinityloft.uz/sitemap.xml
