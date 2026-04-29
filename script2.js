@@ -601,10 +601,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const promoPhone = document.getElementById('promo-phone');
 
     // Show immediately if not closed in this session
+    // Show after 15 seconds or 30% scroll
     if (promoModal && !sessionStorage.getItem('promo_closed')) {
-        setTimeout(() => {
-            promoModal.classList.add('active');
-        }, 1500);
+        const showPromo = () => {
+            if (!sessionStorage.getItem('promo_closed')) {
+                promoModal.classList.add('active');
+                sessionStorage.setItem('promo_closed', 'true');
+            }
+        };
+
+        // Time-based
+        setTimeout(showPromo, 15000);
+
+        // Scroll-based
+        const scrollListener = () => {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > 30) {
+                showPromo();
+                window.removeEventListener('scroll', scrollListener);
+            }
+        };
+        window.addEventListener('scroll', scrollListener);
     }
 
     if (promoClose) {
@@ -711,6 +728,63 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.background = '';
                 }, 3000);
             }
+        });
+    }
+    // ========== COOKIE CONSENT LOGIC ==========
+    const cookieBanner = document.getElementById('cookie-consent');
+    const cookieAccept = document.getElementById('cookie-accept');
+    const cookieDecline = document.getElementById('cookie-decline');
+
+    if (cookieBanner && !localStorage.getItem('cookie-consent')) {
+        setTimeout(() => {
+            cookieBanner.style.display = 'block';
+        }, 2000);
+    }
+
+    if (cookieAccept) {
+        cookieAccept.addEventListener('click', () => {
+            localStorage.setItem('cookie-consent', 'accepted');
+            cookieBanner.style.display = 'none';
+            // Enable Facebook Pixel or other trackers here if they were blocked
+        });
+    }
+
+    if (cookieDecline) {
+        cookieDecline.addEventListener('click', () => {
+            localStorage.setItem('cookie-consent', 'declined');
+            cookieBanner.style.display = 'none';
+        });
+    }
+
+    // ========== 3D MODEL LAZY LOAD ==========
+    const modelIframe = document.getElementById('sketchfab-iframe');
+    if (modelIframe) {
+        const originalSrc = modelIframe.src;
+        modelIframe.src = ''; // Clear src initially
+        
+        const modelObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    modelIframe.src = originalSrc;
+                    modelObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        modelObserver.observe(modelIframe.parentElement);
+    }
+
+    // ========== SHOW MORE TESTIMONIALS ==========
+    const showMoreBtn = document.getElementById('show-more-testimonials');
+    const hiddenTestimonials = document.querySelectorAll('.hidden-testimonial');
+
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            hiddenTestimonials.forEach(item => {
+                item.classList.remove('hidden-testimonial');
+                item.style.animation = 'fadeInUp 0.6s ease forwards';
+            });
+            showMoreBtn.style.display = 'none';
         });
     }
 });

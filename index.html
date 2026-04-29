@@ -35,6 +35,10 @@
     src="https://www.facebook.com/tr?id=1629373438183865&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+    
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld_YourSiteKeyHere"></script>
+
 
     <!-- Force Scroll to Top on Load -->
     <script>
@@ -100,7 +104,7 @@
         "https://infinityloft.uz/images/partitions.png",
         "https://infinityloft.uz/images/garmoshka.jpg"
       ],
-      "logo": "https://infinityloft.uz/images/logo/Logo.jpg.jpg",
+      "logo": "https://infinityloft.uz/images/logo/logo.jpg",
       "@id": "https://infinityloft.uz/",
       "url": "https://infinityloft.uz/",
       "telephone": ["+998931553372", "+998911660071"],
@@ -258,6 +262,17 @@
 </head>
 
 <body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p data-i18n="cookie.text">Biz saytimizda xizmat ko'rsatish sifatini oshirish uchun cookie-fayllardan foydalanamiz. Davom etish orqali siz bunga rozilik bildirasiz.</p>
+            <div class="cookie-actions">
+                <button id="cookie-accept" class="btn btn-primary btn-sm" data-i18n="cookie.accept">Qabul qilish</button>
+                <button id="cookie-decline" class="btn btn-outline btn-sm" data-i18n="cookie.decline">Rad etish</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Preloader -->
     <div id="preloader">
@@ -282,7 +297,7 @@
     <nav id="navbar" class="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo" id="nav-logo">
-                <img src="images/logo/Logo.jpg.jpg" alt="Infinity Loft Logo" class="logo-img">
+                <img src="images/logo/logo.jpg" alt="Infinity Loft Logo" class="logo-img">
                 <div class="logo-text">
                     <span class="logo-main">INFINITY</span>
                     <span class="logo-sub">LOFT</span>
@@ -995,14 +1010,14 @@
 
                     <!-- Final Result Overlay -->
                     <div id="quiz-result"
-                        style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(5, 11, 20, 0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.5s; backdrop-filter: blur(10px); z-index: 10;">
+                        style="position: absolute; top:0; left:0; width:100%; height:100%; background: var(--glass-strong); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.5s; backdrop-filter: blur(10px); z-index: 10;">
                         <!-- Step A: Show Result -->
                         <div id="quiz-res-step-1" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
                             <h3
                                 style="font-size: 22px; color: var(--gold); margin-bottom: 10px; font-weight: 300; letter-spacing: 2px;" data-i18n="calc.your_project">
                                 SIZNING LOYIHANGIZ</h3>
                             <div
-                                style="font-size: 70px; font-weight: 800; background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; display: flex; align-items: baseline; gap: 5px;">
+                                style="font-size: 70px; font-weight: 800; background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; display: flex; align-items: baseline; gap: 5px;">
                                 <span id="animated-price">0</span><span style="font-size: 30px; font-weight: 600;">$</span>
                             </div>
                             <p
@@ -1347,30 +1362,42 @@
             <div class="testimonials-grid" data-aos="fade-up">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card glass">
+                    <div class="testimonial-photo">
+                        <img src="images/testimonials/user1.jpg" alt="Aziz Karimov" loading="lazy">
+                    </div>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.1.text">"Premium sifat va professional yondashuv!"</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.1.author">Aziz Karimov</h5>
                         <span data-i18n="test.1.pos">Toshkent</span>
                     </div>
+                    <a href="#portfolio" class="test-project-link">Loyihani ko'rish →</a>
                 </div>
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card glass">
+                    <div class="testimonial-photo">
+                        <img src="images/testimonials/user2.jpg" alt="Dilshod Mirzo" loading="lazy">
+                    </div>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.2.text">"Dizayn ajoyib chiqdi."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.2.author">Dilshod Mirzo</h5>
                         <span data-i18n="test.2.pos">IT kompaniya</span>
                     </div>
+                    <a href="#portfolio" class="test-project-link">Loyihani ko'rish →</a>
                 </div>
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card glass">
+                    <div class="testimonial-photo">
+                        <img src="images/testimonials/user3.jpg" alt="Nigora Sadykova" loading="lazy">
+                    </div>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.3.text">"Shisha eshiklar zo'r!"</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.3.author">Nigora Sadykova</h5>
                         <span data-i18n="test.3.pos">Zaravshon</span>
                     </div>
+                    <a href="#portfolio" class="test-project-link">Loyihani ko'rish →</a>
                 </div>
                 <!-- Testimonial 4 -->
                 <div class="testimonial-card glass">
@@ -1378,56 +1405,62 @@
                     <p class="testimonial-text" data-i18n="test.4.text">"Juda baquvvat mahsulot."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.4.author">Jasur Aliev</h5>
+                        <span data-i18n="test.4.pos">Kvartira</span>
                     </div>
                 </div>
-                <!-- Testimonial 5 -->
-                <div class="testimonial-card glass">
+                <!-- Testimonial 5 (Hidden Initially) -->
+                <div class="testimonial-card glass hidden-testimonial">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.5.text">"Muddatida topshirishdi."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.5.author">Malika Turdieva</h5>
                     </div>
                 </div>
-                <!-- Testimonial 6 -->
-                <div class="testimonial-card glass">
+                <!-- Testimonial 6 (Hidden Initially) -->
+                <div class="testimonial-card glass hidden-testimonial">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.6.text">"Tavsiya qilaman."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.6.author">Rustam Akramov</h5>
                     </div>
                 </div>
-                <!-- Testimonial 7 -->
-                <div class="testimonial-card glass">
+                <!-- Testimonial 7 (Hidden Initially) -->
+                <div class="testimonial-card glass hidden-testimonial">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.7.text">"Ishonchli ekan."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.7.author">Guli Karimova</h5>
                     </div>
                 </div>
-                <!-- Testimonial 8 -->
-                <div class="testimonial-card glass">
+                <!-- Testimonial 8 (Hidden Initially) -->
+                <div class="testimonial-card glass hidden-testimonial">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.8.text">"Zamonaviy yechimlar."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.8.author">Farrux Nosirov</h5>
                     </div>
                 </div>
-                <!-- Testimonial 9 -->
-                <div class="testimonial-card glass">
+                <!-- Testimonial 9 (Hidden Initially) -->
+                <div class="testimonial-card glass hidden-testimonial">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.9.text">"Sifatga gap yo'q."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.9.author">E'zoza Ahmatova</h5>
                     </div>
                 </div>
-                <!-- Testimonial 10 -->
-                <div class="testimonial-card glass">
+                <!-- Testimonial 10 (Hidden Initially) -->
+                <div class="testimonial-card glass hidden-testimonial">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text" data-i18n="test.10.text">"Xizmat alo darajada."</p>
                     <div class="testimonial-author">
                         <h5 data-i18n="test.10.author">Olim Toshpulatov</h5>
                     </div>
                 </div>
+            </div>
+            <div class="testimonials-footer" data-aos="fade-up" style="text-align: center; margin-top: 50px;">
+                <button id="show-more-testimonials" class="btn btn-outline">
+                    <span data-i18n="test.more">Barcha fikrlar</span> ➔
+                </button>
             </div>
         </div>
     </section>
@@ -1582,7 +1615,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="images/logo/Logo.jpg.jpg" alt="Infinity Loft" class="logo-img">
+                        <img src="images/logo/logo.jpg" alt="Infinity Loft" class="logo-img">
                         <div class="logo-text">
                             <span class="logo-main">INFINITY</span>
                             <span class="logo-sub">LOFT</span>
@@ -1618,7 +1651,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footer.rights">&copy; 2024 Infinity Loft. Barcha huquqlar himoyalangan.</p>
+                <p data-i18n="footer.rights">&copy; 2026 Infinity Loft. Barcha huquqlar himoyalangan.</p>
                 <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Yuqoriga qaytish">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="18 15 12 9 6 15" />

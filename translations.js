@@ -113,6 +113,8 @@ const TRANSLATIONS = {
         "test.10.text": "Xizmat ko'rsatish darajasi juda yuqori. Buyurtmadan to o'rnatishgacha har bir qadamda bizni xabardor qilib turishdi.",
         "test.10.author": "Olim Toshpulatov",
         "test.10.pos": "Toshkent City",
+        "test.more": "Barcha fikrlarni ko'rish",
+
 
         // CTA
         "cta.title": "Loyihangizni <span class='accent'>boshlaylikmi?</span>",
@@ -206,7 +208,10 @@ const TRANSLATIONS = {
         "calc.your_project": "SIZNING LOYIHANGIZ",
         "calc.recalculate": "Qayta hisoblash",
         "calc.send_tg": "Telegram'ga yuborish",
-        "calc.m4": "Premium qora"
+        "calc.m4": "Premium qora",
+        "cookie.text": "Biz saytimizda xizmat ko'rsatish sifatini oshirish uchun cookie-fayllardan foydalanamiz. Davom etish orqali siz bunga rozilik bildirasiz.",
+        "cookie.accept": "Qabul qilish",
+        "cookie.decline": "Rad etish"
     },
 
     ru: {
@@ -277,6 +282,8 @@ const TRANSLATIONS = {
 
         "test.label": "Отзывы",
         "test.title": "Отзывы <span class='accent'>клиентов</span>",
+        "test.more": "Смотреть все отзывы",
+
 
         "cta.title": "Начнём ваш <span class='accent'>проект?</span>",
         "cta.desc": "Свяжитесь с нами для бесплатной консультации и ознакомления с ценами!",
@@ -368,7 +375,10 @@ const TRANSLATIONS = {
         "calc.your_project": "ВАШ ПРОЕКТ",
         "calc.recalculate": "Пересчитать",
         "calc.send_tg": "Отправить в Telegram",
-        "calc.m4": "Премиум черный"
+        "calc.m4": "Премиум черный",
+        "cookie.text": "Мы используем файлы cookie для улучшения работы сайта. Продолжая, вы соглашаетесь с нашей политикой.",
+        "cookie.accept": "Принять",
+        "cookie.decline": "Отклонить"
     },
 
     en: {
@@ -439,6 +449,8 @@ const TRANSLATIONS = {
 
         "test.label": "Reviews",
         "test.title": "Client <span class='accent'>reviews</span>",
+        "test.more": "View All Reviews",
+
 
         "cta.title": "Ready to start your <span class='accent'>project?</span>",
         "cta.desc": "Contact us for a free consultation and pricing information!",
@@ -529,6 +541,9 @@ const TRANSLATIONS = {
         "calc.your_project": "YOUR PROJECT",
         "calc.recalculate": "Recalculate",
         "calc.send_tg": "Send to Telegram",
-        "calc.m4": "Premium black"
+        "calc.m4": "Premium black",
+        "cookie.text": "We use cookies to improve your experience. By continuing, you agree to our cookie policy.",
+        "cookie.accept": "Accept",
+        "cookie.decline": "Decline"
     }
 };

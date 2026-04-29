@@ -3,27 +3,27 @@
    ============================================ */
 
 :root {
-    /* Premium Space & Neon Colors */
-    --gold: #00F3FF;
-    --gold-light: #BC13FE;
-    --gold-dark: #00A6B2;
-    --bg-primary: #050B14;
-    --bg-secondary: #0A1128;
-    --bg-card: #0F1A3A;
-    --bg-card-hover: #15254A;
+    /* Premium Luxury Loft Palette */
+    --gold: #C5A96E;
+    --gold-light: #E5D5B0;
+    --gold-dark: #996515;
+    --bg-primary: #0A0A0B;
+    --bg-secondary: #121213;
+    --bg-card: #18181A;
+    --bg-card-hover: #1F1F22;
     --text-primary: #ffffff;
-    --text-secondary: #ccd6f6;
-    --text-muted: #8892b0;
-    --border: rgba(255,255,255,0.08);
-    --border-gold: rgba(0,243,255,0.3);
-    --glass: rgba(10,17,40,0.4);
-    --glass-strong: rgba(10,17,40,0.8);
-    --shadow-sm: 0 2px 8px rgba(0,243,255,0.15);
-    --shadow-md: 0 8px 32px rgba(0,0,0,0.6);
-    --shadow-lg: 0 16px 64px rgba(0,0,0,0.8);
-    --shadow-gold: 0 0 20px rgba(0,243,255,0.4), 0 0 40px rgba(188,19,254,0.2);
-    --gradient-gold: linear-gradient(135deg, #00F3FF, #BC13FE);
-    --gradient-dark: linear-gradient(135deg, #0A1128, #050B14);
+    --text-secondary: #E0E0E0;
+    --text-muted: #8E8E93;
+    --border: rgba(255,255,255,0.06);
+    --border-gold: rgba(197,169,110,0.3);
+    --glass: rgba(20,20,22,0.6);
+    --glass-strong: rgba(10,10,11,0.9);
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.5);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.7);
+    --shadow-lg: 0 16px 64px rgba(0,0,0,0.9);
+    --shadow-gold: 0 4px 20px rgba(197,169,110,0.2);
+    --gradient-gold: linear-gradient(135deg, #C5A96E, #996515);
+    --gradient-dark: linear-gradient(180deg, #121213, #0A0A0B);
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
@@ -2312,3 +2312,80 @@ iframe[style] {
 /* testimonials 480px rules moved to main responsive block */
 
 
+/* ============ COOKIE BANNER ============ */
+.cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    max-width: 500px;
+    background: var(--glass-strong);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    z-index: 9999;
+    box-shadow: var(--shadow-lg);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@media (min-width: 768px) {
+    .cookie-banner {
+        left: auto;
+        right: 32px;
+        bottom: 32px;
+        width: 400px;
+    }
+}
+
+.cookie-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+}
+/* ============ TESTIMONIAL ENHANCEMENTS ============ */
+.testimonial-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 2px solid var(--gold);
+    box-shadow: var(--shadow-sm);
+}
+
+.testimonial-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.test-project-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.test-project-link:hover {
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.hidden-testimonial {
+    display: none !important;
+}
