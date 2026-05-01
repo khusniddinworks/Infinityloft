@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return localStorage.getItem('infinityloft-lang') || 'uz';
     };
 
-    let currentLang = getInitialLang();
+    window.currentLang = getInitialLang();
+    let currentLang = window.currentLang;
     
     const setLanguage = (lang, redirect = false) => {
         currentLang = lang;
+        window.currentLang = lang;
         localStorage.setItem('infinityloft-lang', lang);
         
         // Update buttons active state

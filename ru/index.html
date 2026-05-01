@@ -59,14 +59,14 @@
     <meta name="description"
         content="Infinity Loft — №1 ЛОФТ металлоконструкции в Ташкенте: двери гармошка, раздвижные системы, стеклянные перегородки, лестницы. 12 лет опыта, 3000+ клиентов. +998 93 155 33 72">
     <meta name="keywords"
-        content="infinity loft, garmoshka eshiklar toshkent, surma eshiklar toshkent, shisha peregorodkalar toshkent, loft eshiklar narxi, shisha eshik narxi uzbekiston, loft metall konstruksiya toshkent, zinapoya toshkent narxi, surma tizimlar, ochiladigan shisha eshiklar, bepul olchov toshkent, shisha peregorodka ofis uchun, loft dizayn toshkent, temir zinapoya narxi, steklyannye peregorodki tashkent, раздвижные двери лофт ташкент, стеклянные перегородки цена ташкент, garmoshka eshik narxi, loft style doors uzbekistan, glass partition tashkent price">
+        content="infinity loft, раздвижные двери ташкент, двери гармошка ташкент, стеклянные перегородки ташкент, лестницы лофт ташкент, металлические конструкции ташкент">
     <meta name="author" content="Infinity Loft">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="geo.region" content="UZ-TK">
     <meta name="geo.placename" content="Toshkent">
     <meta name="geo.position" content="41.191222;69.237833">
     <meta name="ICBM" content="41.191222, 69.237833">
-    <link rel="canonical" href="https://infinityloft.uz/ru/">
+    <link rel="canonical" href="https://infinityloft.uz/">
     <link rel="alternate" hreflang="uz" href="https://infinityloft.uz/">
     <link rel="alternate" hreflang="ru" href="https://infinityloft.uz/ru/">
     <link rel="alternate" hreflang="en" href="https://infinityloft.uz/en/">
@@ -74,22 +74,22 @@
 
     <!-- Open Graph / Social Media -->
     <meta property="og:site_name" content="Infinity Loft">
-    <meta property="og:locale" content="uz_UZ">
-    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="uz_UZ">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://infinityloft.uz/">
+    <meta property="og:url" content="https://infinityloft.uz/ru/">
     <meta property="og:title" content="Infinity Loft — Раздвижные двери, гармошка и стеклянные перегородки в Ташкенте">
     <meta property="og:description"
         content="№1 ЛОФТ металлоконструкции в Ташкенте: двери гармошка, раздвижные системы, стеклянные перегородки. 12 лет опыта, 3000+ клиентов, бесплатный замер!">
     <meta property="og:image" content="https://infinityloft.uz/images/sliding.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Infinity Loft - Premium LOFT eshiklar va shisha peregorodkalar Toshkentda">
+    <meta property="og:image:alt" content="Infinity Loft - Премиальные LOFT двери и стеклянные перегородки в Ташкенте">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Infinity Loft — Surma Eshiklar & Garmoshka Toshkentda | Bepul O'lchov">
-    <meta name="twitter:description" content="Toshkentda №1 LOFT metall konstruksiyalar: garmoshka eshiklar, surma tizimlar, shisha peregorodkalar. 12 yillik tajriba. Bepul o'lchov!">
+    <meta name="twitter:title" content="Infinity Loft — Раздвижные двери, гармошка и стеклянные перегородки в Ташкенте">
+    <meta name="twitter:description" content="№1 ЛОФТ металлоконструкции в Ташкенте: двери гармошка, раздвижные системы, стеклянные перегородки. Бесплатный замер!">
     <meta name="twitter:image" content="https://infinityloft.uz/images/sliding.png">
 
     <!-- JSON-LD: LocalBusiness + Services + FAQ -->
@@ -494,11 +494,11 @@
             <div class="section-header" data-aos="fade-up" style="margin-bottom: 40px;">
                 <div class="section-label center">
                     <span class="label-line"></span>
-                    <span>3D Interaktiv</span>
+                    <span data-i18n="showcase.label">3D Interaktiv</span>
                     <span class="label-line"></span>
                 </div>
-                <h2 class="section-title center">Modelni <span class="accent">3D formatda</span> ko'ring</h2>
-                <p class="section-desc">Konstruksiyani har tomondan aylantirib ko'ring (Sichqoncha bilan yoki ekranga
+                <h2 class="section-title center" data-i18n="showcase.title">Modelni <span class="accent">3D formatda</span> ko'ring</h2>
+                <p class="section-desc" data-i18n="showcase.desc">Konstruksiyani har tomondan aylantirib ko'ring (Sichqoncha bilan yoki ekranga
                     barmoq bilan siljiting)</p>
             </div>
             <div class="model-selector-menu"
@@ -532,7 +532,10 @@
                 document.querySelectorAll('.model-btn').forEach(btn => {
                     btn.addEventListener('click', function () {
                         if (!this.dataset.src || this.dataset.src === "") {
-                            alert("Ushbu dizayn modeli hali kiritilmagan! Iltimos havolani kuting.");
+                            const msg = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[window.currentLang]) 
+                                ? TRANSLATIONS[window.currentLang]['showcase.alert'] 
+                                : "Ushbu dizayn modeli hali kiritilmagan! Iltimos havolani kuting.";
+                            alert(msg);
                             return;
                         }
 
@@ -698,8 +701,8 @@
                             <img src="images/sliding.png" alt="Premium loft style glass sliding doors in Tashkent" loading="lazy">
                             <div class="portfolio-overlay">
                                 <span class="portfolio-category" data-i18n="filter.sliding">Surma</span>
-                                <h4>Premium Sliding</h4>
-                                <p>Minimalist qora profil</p>
+                                <h4 data-i18n="port.sliding.title">Premium Sliding</h4>
+                                <p data-i18n="port.sliding.desc">Minimalist qora profil</p>
                             </div>
                         </div>
                     </div>
@@ -708,9 +711,9 @@
                             <img src="images/photo_11_2026-03-25_10-46-34.jpg" alt="Toshkentda qora profilli riflangan oynali garmoshka va surma eshiklar"
                                 loading="lazy">
                             <div class="portfolio-overlay">
-                                <span class="portfolio-category">Shisha eshik</span>
-                                <h4>Riflangan Surma</h4>
-                                <p>Qora profilli riflangan shisha</p>
+                                <span class="portfolio-category" data-i18n="footer.s2">Shisha eshik</span>
+                                <h4 data-i18n="port.riflangan.title">Riflangan Surma</h4>
+                                <p data-i18n="port.riflangan.desc">Qora profilli riflangan shisha</p>
                             </div>
                         </div>
                     </div>
@@ -1022,7 +1025,7 @@
                                 <span id="animated-price">0</span><span style="font-size: 30px; font-weight: 600;">$</span>
                             </div>
                             <p
-                                style="color: #888; font-size: 14px; margin-bottom: 35px; text-align: center; max-width: 80%;">
+                                style="color: #888; font-size: 14px; margin-bottom: 35px; text-align: center; max-width: 80%;" data-i18n="calc.disclaimer_text">
                                 *Bu yuzaki avtomatik hisoblangan narx. Yakuniy kafolatli narx operator orqali e'lon
                                 qilinadi.</p>
                             <div class="grid-2" style="gap: 15px; width: 100%; padding: 0 40px; box-sizing: border-box;">
@@ -1035,15 +1038,15 @@
 
                         <!-- Step B: Contact Form -->
                         <div id="quiz-res-step-2" style="width: 100%; display: none; flex-direction: column; align-items: center; padding: 0 40px; box-sizing: border-box;">
-                            <h3 style="font-size: 24px; color: white; margin-bottom: 20px; font-weight: 700;">Ma'lumotlaringizni qoldiring</h3>
+                            <h3 style="font-size: 24px; color: white; margin-bottom: 20px; font-weight: 700;" data-i18n="calc.form_title">Ma'lumotlaringizni qoldiring</h3>
                             <div class="form-group" style="width: 100%; margin-bottom: 15px;">
-                                <input type="text" id="quiz-user-name" placeholder="Ismingiz" style="width: 100%; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                                <input type="text" id="quiz-user-name" placeholder="Ismingiz" data-i18n-ph="form.name.ph" style="width: 100%; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;">
                             </div>
                             <div class="form-group" style="width: 100%; margin-bottom: 25px;">
-                                <input type="tel" id="quiz-user-phone" placeholder="+998 (__) ___-__-__" style="width: 100%; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                                <input type="tel" id="quiz-user-phone" placeholder="+998 (__) ___-__-__" data-i18n-ph="form.phone.ph" style="width: 100%; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;">
                             </div>
-                            <button class="btn btn-primary btn-full" id="quiz-final-send" style="border-radius: 12px; width: 100%;">Bog'lanish</button>
-                            <button class="btn" style="background: transparent; color: #888; font-size: 14px; margin-top: 15px; border: none; cursor: pointer;" id="quiz-back">Orqaga</button>
+                            <button class="btn btn-primary btn-full" id="quiz-final-send" style="border-radius: 12px; width: 100%;" data-i18n="form.submit">Bog'lanish</button>
+                            <button class="btn" style="background: transparent; color: #888; font-size: 14px; margin-top: 15px; border: none; cursor: pointer;" id="quiz-back" data-i18n="calc.back">Orqaga</button>
                         </div>
                     </div>
                 </div>
@@ -1702,17 +1705,17 @@
         <div class="promo-content glass">
             <button class="promo-close" id="calc-phone-close">&times;</button>
             <div class="promo-header">
-                <span class="promo-badge">🧮 HISOB-KITOB</span>
-                <h3>Telefon raqamingizni kiriting</h3>
+                <span class="promo-badge" data-i18n="calc.phone.badge">🧮 HISOB-KITOB</span>
+                <h3 data-i18n="calc.phone.title">Telefon raqamingizni kiriting</h3>
             </div>
             <div class="promo-body">
-                <p class="promo-sub-text">Hisob-kitob natijasini mutaxassisimiz siz bilan bog'lanib tushuntiradi:</p>
+                <p class="promo-sub-text" data-i18n="calc.phone.sub">Hisob-kitob natijasini mutaxassisimiz siz bilan bog'lanib tushuntiradi:</p>
                 <form id="calc-phone-form" class="promo-form">
                     <div class="form-group">
-                        <input type="tel" id="calc-phone-input" placeholder="+998 (__) ___-__-__" required>
+                        <input type="tel" id="calc-phone-input" placeholder="+998 (__) ___-__-__" data-i18n-ph="form.phone.ph" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
-                        <span>📨 Yuborish</span>
+                        <span data-i18n="form.submit">📨 Yuborish</span>
                     </button>
                 </form>
             </div>
@@ -1724,7 +1727,7 @@
         <div class="promo-content glass">
             <button class="promo-close" id="promo-close">&times;</button>
             <div class="promo-header">
-                <span class="promo-badge">Ajoyib Taklif!</span>
+                <span class="promo-badge" data-i18n="promo.badge">Ajoyib Taklif!</span>
                 <h3 data-i18n="promo.title">AKSIYA!</h3>
             </div>
             <div class="promo-body">

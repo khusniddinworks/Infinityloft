@@ -169,6 +169,7 @@ const TRANSLATIONS = {
 
         // Promo Modal
         "promo.title": "YANGI MIJOZLAR UCHUN AKSIYA!",
+        "promo.badge": "Ajoyib Taklif!",
         "promo.desc": "Birinchi buyurtmangiz uchun <b>-10% CHEGIRMA</b> oling!",
         "promo.sub": "Chegirmani olish uchun telefon raqamingizni qoldiring:",
         "promo.btn": "Chegirmani olish",
@@ -211,7 +212,34 @@ const TRANSLATIONS = {
         "calc.m4": "Premium qora",
         "cookie.text": "Biz saytimizda xizmat ko'rsatish sifatini oshirish uchun cookie-fayllardan foydalanamiz. Davom etish orqali siz bunga rozilik bildirasiz.",
         "cookie.accept": "Qabul qilish",
-        "cookie.decline": "Rad etish"
+        "cookie.decline": "Rad etish",
+
+        // Showcase
+        "showcase.label": "3D Interaktiv",
+        "showcase.title": "Modelni <span class='accent'>3D formatda</span> ko'ring",
+        "showcase.desc": "Konstruksiyani har tomondan aylantirib ko'ring (Sichqoncha bilan yoki ekranga barmoq bilan siljiting)",
+        "showcase.alert": "Ushbu dizayn modeli hali kiritilmagan! Iltimos havolani kuting.",
+
+        // Portfolio Items (Generic/Common)
+        "port.sliding.title": "Premium Sliding",
+        "port.sliding.desc": "Minimalist qora profil",
+        "port.riflangan.title": "Riflangan Surma",
+        "port.riflangan.desc": "Qora profilli riflangan shisha",
+        "port.elegant.title": "Elegantlik Surma",
+        "port.elegant.desc": "Premium riflangan shisha",
+        "port.three.title": "Uch qanotli",
+        "port.three.desc": "Qora profildi 3-panel surma",
+        "port.partition.title": "Koridor Partitsiya",
+        "port.partition.desc": "Shisha garderobnaya tizimi",
+        "port.view_project": "Loyihani ko'rish",
+
+        // Calculator Result
+        "calc.disclaimer_text": "*Bu yuzaki avtomatik hisoblangan narx. Yakuniy kafolatli narx operator orqali e'lon qilinadi.",
+        "calc.form_title": "Ma'lumotlaringizni qoldiring",
+        "calc.back": "Orqaga",
+        "calc.phone.badge": "🧮 HISOB-KITOB",
+        "calc.phone.title": "Telefon raqamingizni kiriting",
+        "calc.phone.sub": "Hisob-kitob natijasini mutaxassisimiz siz bilan bog'lanib tushuntiradi:"
     },
 
     ru: {
@@ -275,10 +303,14 @@ const TRANSLATIONS = {
         "process.s4.title": "Монтаж",
         "process.s4.desc": "Профессиональный монтаж с соблюдением чистоты и порядка.",
 
-        "stats.s1": "Выполненных проектов",
-        "stats.s2": "Довольных клиентов",
-        "stats.s3": "Лет опыта",
-        "stats.s4": "Профессиональных мастеров",
+        "stats.s1": "2,000+",
+        "stats.s2": "3,000+",
+        "stats.s3": "12 лет",
+        "stats.s4": "50+",
+        "stats.l1": "Проектов",
+        "stats.l2": "Клиентов",
+        "stats.l3": "Опыта",
+        "stats.l4": "Мастеров",
 
         "test.label": "Отзывы",
         "test.title": "Отзывы <span class='accent'>клиентов</span>",
@@ -336,6 +368,7 @@ const TRANSLATIONS = {
 
         // Promo Modal
         "promo.title": "АКЦИЯ ДЛЯ НОВЫХ КЛИЕНТОВ!",
+        "promo.badge": "Отличное предложение!",
         "promo.desc": "Получите <b>-10% СКИДКУ</b> на первый заказ!",
         "promo.sub": "Оставьте свой номер, чтобы закрепить скидку за собой:",
         "promo.btn": "Получить скидку",
@@ -378,7 +411,34 @@ const TRANSLATIONS = {
         "calc.m4": "Премиум черный",
         "cookie.text": "Мы используем файлы cookie для улучшения работы сайта. Продолжая, вы соглашаетесь с нашей политикой.",
         "cookie.accept": "Принять",
-        "cookie.decline": "Отклонить"
+        "cookie.decline": "Отклонить",
+
+        // Showcase
+        "showcase.label": "3D Интерактив",
+        "showcase.title": "Посмотрите модель в <span class='accent'>3D формате</span>",
+        "showcase.desc": "Поворачивайте конструкцию со всех сторон (мышкой или пальцем на экране)",
+        "showcase.alert": "Эта модель еще не добавлена! Пожалуйста, подождите.",
+
+        // Portfolio Items (Generic/Common)
+        "port.sliding.title": "Премиум Раздвижные",
+        "port.sliding.desc": "Минималистичный черный профиль",
+        "port.riflangan.title": "Рифленое Раздвижное",
+        "port.riflangan.desc": "Рифленое стекло с черным профилем",
+        "port.elegant.title": "Элегантное Раздвижное",
+        "port.elegant.desc": "Премиальное рифленое стекло",
+        "port.three.title": "Трехстворчатое",
+        "port.three.desc": "3-панельное раздвижное в черном профиле",
+        "port.partition.title": "Перегородка в коридор",
+        "port.partition.desc": "Стеклянная гардеробная система",
+        "port.view_project": "Посмотреть проект",
+
+        // Calculator Result
+        "calc.disclaimer_text": "*Это предварительный автоматический расчет. Окончательная цена будет озвучена оператором.",
+        "calc.form_title": "Оставьте ваши данные",
+        "calc.back": "Назад",
+        "calc.phone.badge": "🧮 РАСЧЕТ",
+        "calc.phone.title": "Введите ваш номер телефона",
+        "calc.phone.sub": "Наш специалист свяжется с вами и объяснит результат расчета:"
     },
 
     en: {
@@ -442,10 +502,14 @@ const TRANSLATIONS = {
         "process.s4.title": "Installation",
         "process.s4.desc": "Professional installation service, maintaining cleanliness and order.",
 
-        "stats.s1": "Completed projects",
-        "stats.s2": "Satisfied clients",
-        "stats.s3": "Years of experience",
-        "stats.s4": "Professional craftsmen",
+        "stats.s1": "2,000+",
+        "stats.s2": "3,000+",
+        "stats.s3": "12 years",
+        "stats.s4": "50+",
+        "stats.l1": "Projects",
+        "stats.l2": "Clients",
+        "stats.l3": "Experience",
+        "stats.l4": "Masters",
 
         "test.label": "Reviews",
         "test.title": "Client <span class='accent'>reviews</span>",
@@ -502,6 +566,7 @@ const TRANSLATIONS = {
 
         // Promo Modal
         "promo.title": "PROMOTION FOR NEW CLIENTS!",
+        "promo.badge": "Great Offer!",
         "promo.desc": "Get a <b>-10% DISCOUNT</b> on your first order!",
         "promo.sub": "Enter your phone number to claim your discount:",
         "promo.btn": "Get My Discount",
@@ -544,6 +609,33 @@ const TRANSLATIONS = {
         "calc.m4": "Premium black",
         "cookie.text": "We use cookies to improve your experience. By continuing, you agree to our cookie policy.",
         "cookie.accept": "Accept",
-        "cookie.decline": "Decline"
+        "cookie.decline": "Decline",
+
+        // Showcase
+        "showcase.label": "3D Interactive",
+        "showcase.title": "View model in <span class='accent'>3D format</span>",
+        "showcase.desc": "Rotate the construction from all sides (using mouse or finger on screen)",
+        "showcase.alert": "This model is not added yet! Please wait.",
+
+        // Portfolio Items (Generic/Common)
+        "port.sliding.title": "Premium Sliding",
+        "port.sliding.desc": "Minimalist black profile",
+        "port.riflangan.title": "Fluted Sliding",
+        "port.riflangan.desc": "Fluted glass with black profile",
+        "port.elegant.title": "Elegant Sliding",
+        "port.elegant.desc": "Premium fluted glass",
+        "port.three.title": "Three-leaf",
+        "port.three.desc": "3-panel sliding in black profile",
+        "port.partition.title": "Corridor Partition",
+        "port.partition.desc": "Glass wardrobe system",
+        "port.view_project": "View Project",
+
+        // Calculator Result
+        "calc.disclaimer_text": "*This is a preliminary automatic calculation. Final price will be announced by the operator.",
+        "calc.form_title": "Leave your details",
+        "calc.back": "Back",
+        "calc.phone.badge": "🧮 CALCULATION",
+        "calc.phone.title": "Enter your phone number",
+        "calc.phone.sub": "Our specialist will contact you to explain the calculation result:"
     }
 };
