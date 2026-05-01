@@ -5,13 +5,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ========== LANGUAGE SWITCHER ==========
-    let currentLang = localStorage.getItem('infinityloft-lang') || 'uz';
+    const getInitialLang = () => {
+        const path = window.location.pathname;
+        if (path.includes('/ru/')) return 'ru';
+        if (path.includes('/en/')) return 'en';
+        return localStorage.getItem('infinityloft-lang') || 'uz';
+    };
+
+    let currentLang = getInitialLang();
     
-    const setLanguage = (lang) => {
+    const setLanguage = (lang, redirect = false) => {
         currentLang = lang;
         localStorage.setItem('infinityloft-lang', lang);
         
-        // Update buttons
+        // Update buttons active state
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
@@ -34,15 +41,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Update HTML lang attribute
-        document.documentElement.lang = lang === 'uz' ? 'uz' : lang === 'ru' ? 'ru' : 'en';
+        document.documentElement.lang = lang;
+
+        // Handle Redirects for URL-based languages
+        if (redirect) {
+            const currentPath = window.location.pathname;
+            const isRoot = currentPath === '/' || currentPath === '/index.html';
+            const isRU = currentPath.includes('/ru/');
+            const isEN = currentPath.includes('/en/');
+
+            let targetUrl = '/';
+            if (lang === 'ru') targetUrl = '/ru/';
+            else if (lang === 'en') targetUrl = '/en/';
+
+            // Only redirect if we are changing to a different language path
+            if (window.location.pathname !== targetUrl) {
+                window.location.href = targetUrl;
+            }
+        }
     };
     
-    // Init language
-    setLanguage(currentLang);
+    // Init language (without redirect)
+    setLanguage(currentLang, false);
     
     // Language button clicks
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        btn.addEventListener('click', () => {
+            const selectedLang = btn.dataset.lang;
+            setLanguage(selectedLang, true);
+        });
     });
 
     // ========== PRELOADER ==========
