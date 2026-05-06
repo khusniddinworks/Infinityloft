@@ -63,8 +63,6 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="geo.region" content="UZ-TK">
     <meta name="geo.placename" content="Toshkent">
-    <meta name="geo.position" content="41.191222;69.237833">
-    <meta name="ICBM" content="41.191222, 69.237833">
     <link rel="canonical" href="https://infinityloft.uz/">
     <link rel="alternate" hreflang="uz" href="https://infinityloft.uz/">
     <link rel="alternate" hreflang="ru" href="https://infinityloft.uz/ru/">
@@ -183,7 +181,7 @@
         "worstRating": "1"
       },
       "sameAs": [
-        "https://t.me/infinityloft",
+        "https://t.me/infinityloft?text=Assalomu%20alaykum!%20Infinity%20Loft%20saytidan%20yozyapman...",
         "https://www.instagram.com/infinityloft.uz"
       ]
     }
@@ -943,6 +941,11 @@
                         </div>
                     </div>
 
+                    <!-- Live Price Indicator -->
+                    <div id="live-price-indicator" style="position: absolute; top: 20px; right: 20px; color: var(--gold); font-weight: 700; font-size: 1.2rem; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 30px; border: 1px solid var(--gold); z-index: 5; opacity: 0; transition: opacity 0.3s;">
+                        <span id="live-price-val">0</span>$
+                    </div>
+
                     <!-- Slider Container -->
                     <div class="quiz-container"
                         style="display: flex; width: 300%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(0%); height: 100%; align-items: center;"
@@ -1092,6 +1095,22 @@
                     let basePrice = 140;
                     let matMultiplier = 1;
 
+                    const livePriceIndicator = document.getElementById('live-price-indicator');
+                    const livePriceVal = document.getElementById('live-price-val');
+
+                    function updateLivePrice() {
+                        const w = parseFloat(document.getElementById('q-w').value) || 0;
+                        const h = parseFloat(document.getElementById('q-h').value) || 0;
+                        const total = Math.round(w * h * basePrice * matMultiplier);
+                        livePriceVal.innerText = total.toLocaleString();
+                        
+                        if (currentStep > 1) {
+                            livePriceIndicator.style.opacity = '1';
+                        } else {
+                            livePriceIndicator.style.opacity = '0';
+                        }
+                    }
+
                     // Option Selection Logic
                     document.querySelectorAll('.quiz-options').forEach(group => {
                         const btns = group.querySelectorAll('.quiz-btn');
@@ -1102,15 +1121,21 @@
 
                                 if (this.dataset.val) basePrice = parseFloat(this.dataset.val);
                                 if (this.dataset.mat) matMultiplier = parseFloat(this.dataset.mat);
+                                updateLivePrice();
                             });
                         });
                     });
+
+                    // Input listeners for dimensions
+                    document.getElementById('q-w').addEventListener('input', updateLivePrice);
+                    document.getElementById('q-h').addEventListener('input', updateLivePrice);
 
                     // Navigation
                     document.querySelectorAll('.next-step').forEach(btn => {
                         btn.addEventListener('click', function () {
                             currentStep++;
                             updateSlider();
+                            updateLivePrice();
                         });
                     });
 
@@ -1118,6 +1143,7 @@
                         btn.addEventListener('click', function () {
                             currentStep--;
                             updateSlider();
+                            updateLivePrice();
                         });
                     });
 
@@ -1128,10 +1154,9 @@
 
                     // Calculate Action
                     document.querySelector('.calculate-final').addEventListener('click', () => {
-                        const w = parseFloat(document.getElementById('q-w').value) || 0;
-                        const h = parseFloat(document.getElementById('q-h').value) || 0;
-                        const area = w * h;
-                        const total = area * basePrice * matMultiplier;
+                        updateLivePrice();
+                        const total = parseInt(livePriceVal.innerText.replace(/\D/g, ''));
+                        livePriceIndicator.style.opacity = '0';
 
                         resultOverlay.style.opacity = '1';
                         resultOverlay.style.pointerEvents = 'all';
@@ -1295,8 +1320,8 @@
                             </svg>
                         </div>
                         <h3 data-i18n="process.s1.title">Konsultatsiya</h3>
-                        <p data-i18n="process.s1.desc">Sizning g'oyalaringizni tinglaimiz, loyiha talablarini aniqlaymiz
-                            va bepul maslahat beramiz.</p>
+                        <p data-i18n="process.s1.desc">Sizning g'oyalaringizni tinglaimiz, loyiha talablarini aniqlaymiz va bepul maslahat beramiz.</p>
+                        <span class="step-time" style="color: var(--gold); font-size: 0.9rem; font-weight: 600;">🕒 1-2 soat</span>
                     </div>
                 </div>
                 <div class="process-connector"></div>
@@ -1310,8 +1335,8 @@
                             </svg>
                         </div>
                         <h3 data-i18n="process.s2.title">Loyihalash</h3>
-                        <p data-i18n="process.s2.desc">Individual dizayn va texnik chizmalar tayyorlaymiz. 3D
-                            vizualizatsiya ko'rsatamiz.</p>
+                        <p data-i18n="process.s2.desc">Individual dizayn va texnik chizmalar tayyorlaymiz. 3D vizualizatsiya ko'rsatamiz.</p>
+                        <span class="step-time" style="color: var(--gold); font-size: 0.9rem; font-weight: 600;">🕒 1-2 kun</span>
                     </div>
                 </div>
                 <div class="process-connector"></div>
@@ -1326,8 +1351,8 @@
                             </svg>
                         </div>
                         <h3 data-i18n="process.s3.title">Ishlab chiqarish</h3>
-                        <p data-i18n="process.s3.desc">Premium materiallardan professional usulda ishlab chiqaramiz. Har
-                            bir detal nazorat ostida.</p>
+                        <p data-i18n="process.s3.desc">Premium materiallardan professional usulda ishlab chiqaramiz. Har bir detal nazorat ostida.</p>
+                        <span class="step-time" style="color: var(--gold); font-size: 0.9rem; font-weight: 600;">🕒 7-15 kun</span>
                     </div>
                 </div>
                 <div class="process-connector"></div>
@@ -1342,8 +1367,8 @@
                             </svg>
                         </div>
                         <h3 data-i18n="process.s4.title">O'rnatish</h3>
-                        <p data-i18n="process.s4.desc">Professional montaj xizmati. Tozalik va tartibni saqlagan holda
-                            mukammal o'rnatamiz.</p>
+                        <p data-i18n="process.s4.desc">Professional montaj xizmati. Tozalik va tartibni saqlagan holda mukammal o'rnatamiz.</p>
+                        <span class="step-time" style="color: var(--gold); font-size: 0.9rem; font-weight: 600;">🕒 1-2 kun</span>
                     </div>
                 </div>
             </div>
@@ -1362,108 +1387,58 @@
                 <h2 class="section-title center" data-i18n="test.title">Mijozlarimiz <span
                         class="accent">fikrlari</span></h2>
             </div>
-            <div class="testimonials-grid" data-aos="fade-up">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card glass">
-                    <div class="testimonial-photo">
-                        <img src="images/testimonials/user1.jpg" alt="Aziz Karimov" loading="lazy">
+            <div class="testimonials-slider" data-aos="fade-up">
+                <div class="testimonial-track" id="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text" data-i18n="test.1.text">"Infinity Loft jamoasi bilan ishlash juda qulay bo'ldi. Shisha eshiklarimiz endi uyimizning eng chiroyli qismi."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AK</div>
+                            <div class="author-info">
+                                <h5 data-i18n="test.1.author">Aziz Karimov</h5>
+                                <span data-i18n="test.1.pos">Toshkent, shaxsiy uy</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.1.text">"Premium sifat va professional yondashuv!"</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.1.author">Aziz Karimov</h5>
-                        <span data-i18n="test.1.pos">Toshkent</span>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text" data-i18n="test.2.text">"Ofisimiz uchun shisha partitsiyalar o'rnatdik. Natija kutganimizdan ham zo'r bo'ldi."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">DM</div>
+                            <div class="author-info">
+                                <h5 data-i18n="test.2.author">Dilshod Mirzo</h5>
+                                <span data-i18n="test.2.pos">IT kompaniya, ofis</span>
+                            </div>
+                        </div>
                     </div>
-                    <a href="#portfolio" class="test-project-link">Loyihani ko'rish →</a>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card glass">
-                    <div class="testimonial-photo">
-                        <img src="images/testimonials/user2.jpg" alt="Dilshod Mirzo" loading="lazy">
-                    </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.2.text">"Dizayn ajoyib chiqdi."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.2.author">Dilshod Mirzo</h5>
-                        <span data-i18n="test.2.pos">IT kompaniya</span>
-                    </div>
-                    <a href="#portfolio" class="test-project-link">Loyihani ko'rish →</a>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card glass">
-                    <div class="testimonial-photo">
-                        <img src="images/testimonials/user3.jpg" alt="Nigora Sadykova" loading="lazy">
-                    </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.3.text">"Shisha eshiklar zo'r!"</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.3.author">Nigora Sadykova</h5>
-                        <span data-i18n="test.3.pos">Zaravshon</span>
-                    </div>
-                    <a href="#portfolio" class="test-project-link">Loyihani ko'rish →</a>
-                </div>
-                <!-- Testimonial 4 -->
-                <div class="testimonial-card glass">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.4.text">"Juda baquvvat mahsulot."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.4.author">Jasur Aliev</h5>
-                        <span data-i18n="test.4.pos">Kvartira</span>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text" data-i18n="test.3.text">"Shisha eshiklar juda chiroyli chiqdi. Riflangan shisha va qora profil — zamonaviy ko'rinish."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">NS</div>
+                            <div class="author-info">
+                                <h5 data-i18n="test.3.author">Nigora Sadykova</h5>
+                                <span data-i18n="test.3.pos">Tashkent City</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- Testimonial 5 (Hidden Initially) -->
-                <div class="testimonial-card glass hidden-testimonial">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.5.text">"Muddatida topshirishdi."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.5.author">Malika Turdieva</h5>
-                    </div>
+                
+                <div class="testimonial-controls">
+                    <button class="test-prev" id="test-prev" aria-label="Previous testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="test-next" id="test-next" aria-label="Next testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
-                <!-- Testimonial 6 (Hidden Initially) -->
-                <div class="testimonial-card glass hidden-testimonial">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.6.text">"Tavsiya qilaman."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.6.author">Rustam Akramov</h5>
-                    </div>
-                </div>
-                <!-- Testimonial 7 (Hidden Initially) -->
-                <div class="testimonial-card glass hidden-testimonial">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.7.text">"Ishonchli ekan."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.7.author">Guli Karimova</h5>
-                    </div>
-                </div>
-                <!-- Testimonial 8 (Hidden Initially) -->
-                <div class="testimonial-card glass hidden-testimonial">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.8.text">"Zamonaviy yechimlar."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.8.author">Farrux Nosirov</h5>
-                    </div>
-                </div>
-                <!-- Testimonial 9 (Hidden Initially) -->
-                <div class="testimonial-card glass hidden-testimonial">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.9.text">"Sifatga gap yo'q."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.9.author">E'zoza Ahmatova</h5>
-                    </div>
-                </div>
-                <!-- Testimonial 10 (Hidden Initially) -->
-                <div class="testimonial-card glass hidden-testimonial">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="test.10.text">"Xizmat alo darajada."</p>
-                    <div class="testimonial-author">
-                        <h5 data-i18n="test.10.author">Olim Toshpulatov</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonials-footer" data-aos="fade-up" style="text-align: center; margin-top: 50px;">
-                <button id="show-more-testimonials" class="btn btn-outline">
-                    <span data-i18n="test.more">Barcha fikrlar</span> ➔
-                </button>
             </div>
         </div>
     </section>
@@ -1480,7 +1455,7 @@
                         <a href="tel:+998931553372" class="btn btn-primary btn-large" id="cta-call">
                             <span data-i18n="cta.call">📞 Qo'ng'iroq qiling</span>
                         </a>
-                        <a href="https://t.me/infinityloft" class="btn btn-telegram btn-large" id="cta-telegram"
+                        <a href="https://t.me/infinityloft?text=Assalomu%20alaykum!%20Infinity%20Loft%20saytidan%20yozyapman..." class="btn btn-telegram btn-large" id="cta-telegram"
                             target="_blank" rel="noopener noreferrer">
                             <span>✈️ Telegram</span>
                         </a>
@@ -1545,7 +1520,7 @@
                         </div>
                     </div>
                     <div class="contact-socials">
-                        <a href="https://t.me/infinityloft" class="social-link" target="_blank"
+                        <a href="https://t.me/infinityloft?text=Assalomu%20alaykum!%20Infinity%20Loft%20saytidan%20yozyapman..." class="social-link" target="_blank"
                             rel="noopener noreferrer" aria-label="Telegram" id="social-telegram">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -1569,6 +1544,10 @@
                 </div>
                 <div class="contact-form-wrapper" data-aos="fade-left">
                     <form class="contact-form" id="contact-form">
+                        <div style="display:none !important;">
+                            <label>Leave this field blank</label>
+                            <input type="text" name="honeypot" value="">
+                        </div>
                         <div class="form-group">
                             <label for="name" data-i18n="form.name">Ismingiz</label>
                             <input type="text" id="name" name="name" placeholder="Ismingizni kiriting"
@@ -1641,8 +1620,8 @@
                     <ul>
                         <li><a href="#about" data-i18n="nav.about">Biz haqimizda</a></li>
                         <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
-                        <li><a href="#process" data-i18n="nav.process">Jarayon</a></li>
-                        <li><a href="#contact" data-i18n="nav.contact">Aloqa</a></li>
+                        <li><a href="privacy.html" data-i18n="footer.privacy">Maxfiylik siyosati</a></li>
+                        <li><a href="terms.html" data-i18n="footer.terms">Foydalanish shartlari</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -1734,6 +1713,9 @@
                     oling!</p>
                 <p class="promo-sub-text" data-i18n="promo.sub">Raqamingizni qoldiring:</p>
                 <form id="promo-form" class="promo-form">
+                    <div style="display:none !important;">
+                        <input type="text" name="honeypot" value="">
+                    </div>
                     <div class="form-group">
                         <input type="text" id="promo-name" name="name" placeholder="Ismingiz" data-i18n-ph="form.name.ph" required>
                     </div>

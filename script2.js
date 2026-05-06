@@ -118,6 +118,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
+    // ========== BACK TO TOP ==========
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.style.opacity = '1';
+            backToTop.style.visibility = 'visible';
+            backToTop.style.transform = 'translateY(0)';
+        } else {
+            backToTop.style.opacity = '0';
+            backToTop.style.visibility = 'hidden';
+            backToTop.style.transform = 'translateY(20px)';
+        }
+    });
+
     // ========== MOBILE MENU ==========
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');

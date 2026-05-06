@@ -165,7 +165,9 @@ const TRANSLATIONS = {
         "footer.s3": "Partitsiyalar",
         "footer.s4": "To'siqlar",
         "footer.pages": "Sahifalar",
-        "footer.rights": "&copy; 2024 Infinity Loft. Barcha huquqlar himoyalangan.",
+        "footer.privacy": "Maxfiylik siyosati",
+        "footer.terms": "Foydalanish shartlari",
+        "footer.rights": "&copy; 2026 Infinity Loft. Barcha huquqlar himoyalangan.",
 
         // Promo Modal
         "promo.title": "YANGI MIJOZLAR UCHUN AKSIYA!",
@@ -364,7 +366,9 @@ const TRANSLATIONS = {
         "footer.s3": "Перегородки",
         "footer.s4": "Ограждения",
         "footer.pages": "Страницы",
-        "footer.rights": "&copy; 2024 Infinity Loft. Все права защищены.",
+        "footer.privacy": "Политика конфиденциальности",
+        "footer.terms": "Условия использования",
+        "footer.rights": "&copy; 2026 Infinity Loft. Все права защищены.",
 
         // Promo Modal
         "promo.title": "АКЦИЯ ДЛЯ НОВЫХ КЛИЕНТОВ!",
@@ -562,7 +566,9 @@ const TRANSLATIONS = {
         "footer.s3": "Partitions",
         "footer.s4": "Railings",
         "footer.pages": "Pages",
-        "footer.rights": "&copy; 2024 Infinity Loft. All rights reserved.",
+        "footer.privacy": "Privacy Policy",
+        "footer.terms": "Terms of Service",
+        "footer.rights": "&copy; 2026 Infinity Loft. All rights reserved.",
 
         // Promo Modal
         "promo.title": "PROMOTION FOR NEW CLIENTS!",

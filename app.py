@@ -84,6 +84,10 @@ def contact():
     if not data:
         return jsonify({"success": False, "message": "No data received"}), 400
 
+    # Honeypot check for bots
+    if data.get("honeypot"):
+        return jsonify({"success": False, "message": "Bot detected"}), 403
+
     name = data.get("name", "").strip()
     phone = data.get("phone", "").strip()
     service = data.get("service", "").strip()
