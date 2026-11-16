@@ -1,3 +1,4 @@
+git status
 git add .
-git commit -m "Security audit fixes and UX improvements"
+git commit -m "Add Facebook domain verification meta tag"
 git push
