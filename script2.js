@@ -365,10 +365,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auto-rotate testimonials
     setInterval(() => goToTestimonial(testimonialIndex + 1), 7000);
 
-    // ========== CONTACT FORM ==========
+    // ========== CONTACT FORM & TELEGRAM DELIVERY ==========
     const contactForm = document.getElementById('contact-form');
-    // GitHub Pages (sayt) -> Render (Python bot backend)
+    // Backend server URL & Telegram Direct Fallback
     const SERVER_URL = 'https://infinityloft.onrender.com/api/contact';
+    const TG_BOT_TOKEN = '8520866623:AAF2nIPGYJ0xPgh1-kVfDHKEN-ANcqgZaj0';
+    const TG_CHAT_ID = '-1003805138744';
+
+    async function sendLead(payload) {
+        // 1. Try Render backend first
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            const response = await fetch(SERVER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+            if (response.ok) return true;
+        } catch (e) {
+            console.warn('Backend server unavailable, sending directly to Telegram...', e);
+        }
+
+        // 2. Fallback directly to Telegram Bot API
+        try {
+            const text = `🛡️ <b>INFINITY LOFT — YANGI BUYURTMA</b>\n\n` +
+                         `👤 <b>Mijoz:</b> ${payload.name || "Kiritilmagan"}\n` +
+                         `📞 <b>Telefon:</b> ${payload.phone || "Kiritilmagan"}\n` +
+                         `📐 <b>Xizmat:</b> ${payload.service || "Aloqa"}\n` +
+                         `💬 <b>Xabar:</b>\n${payload.message || "Xabar yo'q"}`;
+
+            const tgResponse = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TG_CHAT_ID,
+                    text: text,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            const tgData = await tgResponse.json();
+            if (tgData.ok) return true;
+            throw new Error(tgData.description || 'Telegram API Error');
+        } catch (err) {
+            console.error('Direct Telegram delivery failed:', err);
+            throw err;
+        }
+    }
 
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
@@ -390,22 +436,11 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch(SERVER_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    const successText = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLang]) ? TRANSLATIONS[currentLang]['form.success'] : '✅ Yuborildi!';
-                    btn.innerHTML = `<span data-i18n="form.success">${successText}</span>`;
-                    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-                    contactForm.reset();
-                } else {
-                    const errorDetail = await response.text();
-                    console.error('Server responded with error:', errorDetail);
-                    throw new Error('Server error');
-                }
+                await sendLead(data);
+                const successText = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLang]) ? TRANSLATIONS[currentLang]['form.success'] : '✅ Yuborildi!';
+                btn.innerHTML = `<span data-i18n="form.success">${successText}</span>`;
+                btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                contactForm.reset();
             } catch (error) {
                 console.error('SUBMISSION FAILED:', error);
                 btn.innerHTML = '<span>❌ Xatolik yuz berdi</span>';
@@ -611,20 +646,11 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch(SERVER_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (response.ok) {
-                    calcPhoneForm.innerHTML = `<p style="color: #c9a96e; font-weight: 600; padding: 20px; text-align:center;">✅ Yuborildi! Tez orada bog'lanamiz.</p>`;
-                    setTimeout(() => {
-                        calcPhoneModal.classList.remove('active');
-                    }, 3000);
-                } else {
-                    throw new Error('Server error');
-                }
+                await sendLead(payload);
+                calcPhoneForm.innerHTML = `<p style="color: #c9a96e; font-weight: 600; padding: 20px; text-align:center;">✅ Yuborildi! Tez orada bog'lanamiz.</p>`;
+                setTimeout(() => {
+                    calcPhoneModal.classList.remove('active');
+                }, 3000);
             } catch (err) {
                 console.error('CALC SEND ERROR:', err);
                 btn.innerHTML = '<span>❌ Xatolik</span>';
@@ -736,17 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch(SERVER_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorDetail = await response.text();
-                    console.error('PROMO FORM SERVER ERROR:', errorDetail);
-                    throw new Error('Server error');
-                }
+                await sendLead(payload);
 
                 const successMsg = t['promo.success'] || "Tabriklaymiz! Mutaxassisimiz tez orada bog'lanadi.";
                 promoForm.innerHTML = `<p style="color: #c9a96e; font-weight: 600; padding: 20px;">${successMsg}</p>`;
@@ -760,7 +776,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (btn) {
                     btn.innerHTML = `<span>${t['promo.error'] || '❌ Xatolik yuz berdi'}</span>`;
                     btn.style.background = '#ef4444';
-                    // Show actual error in console for debugging
                     console.log('Error detail:', err.message);
                 }
             } finally {
